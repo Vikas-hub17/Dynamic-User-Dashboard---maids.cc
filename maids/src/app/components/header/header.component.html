@@ -1,1 +1,8 @@
-<p>header works!</p>
+<mat-toolbar>
+    <span>User Dashboard</span>
+    <span class="spacer"></span>
+    <mat-form-field>
+      <input matInput placeholder="Search by ID" [(ngModel)]="searchQuery" (input)="onSearch()">
+    </mat-form-field>
+  </mat-toolbar>
+  

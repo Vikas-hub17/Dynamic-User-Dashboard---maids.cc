@@ -1,1 +1,14 @@
-<p>user-details works!</p>
+<mat-card *ngIf="user">
+    <mat-card-header>
+      <mat-card-avatar>
+        <img mat-card-avatar [src]="user.avatar" alt="{{user.first_name}} {{user.last_name}}">
+      </mat-card-avatar>
+      <mat-card-title>{{user.first_name}} {{user.last_name}}</mat-card-title>
+      <mat-card-subtitle>User ID: {{user.id}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Email: {{user.email}}</p>
+    </mat-card-content>
+    <button mat-button (click)="goBack()">Back</button>
+  </mat-card>
+  

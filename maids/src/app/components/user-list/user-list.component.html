@@ -1,1 +1,15 @@
-<p>user-list works!</p>
+<mat-card *ngFor="let user of users" (click)="navigateToDetails(user.id)">
+    <mat-card-header>
+      <mat-card-avatar>
+        <img mat-card-avatar [src]="user.avatar" alt="{{user.first_name}} {{user.last_name}}">
+      </mat-card-avatar>
+      <mat-card-title>{{user.first_name}} {{user.last_name}}</mat-card-title>
+    </mat-card-header>
+  </mat-card>
+  
+  <mat-paginator
+    [length]="12"
+    [pageSize]="6"
+    (page)="onPaginateChange($event)">
+  </mat-paginator>
+  <mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>

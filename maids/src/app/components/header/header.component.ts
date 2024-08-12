@@ -4,16 +4,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  searchQuery: string = '';
+  searchId: string = '';
 
   constructor(private router: Router) {}
 
   onSearch(): void {
-    if (this.searchQuery) {
-      this.router.navigate(['/users', this.searchQuery]);
+    if (this.searchId) {
+      this.router.navigate(['/user', this.searchId]);
     }
   }
 }

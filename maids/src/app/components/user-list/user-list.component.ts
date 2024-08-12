@@ -1,33 +1,40 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.css']
+  selector: 'app-user-details',
+  templateUrl: './user-details.component.html',
+  styleUrls: ['./user-details.component.css'],
 })
-export class UserListComponent implements OnInit {
-  users: any[] = [];
-  currentPage: number = 1;
-
-  constructor(private userService: UserService) {}
-
-  ngOnInit(): void {
-    this.loadUsers();
-  }
-
+export class UserDetailsComponent implements OnInit {
+  user: any;
   loading: boolean = false;
 
-loadUsers(): void {
-  this.loading = true;
-  this.userService.getUsers(this.currentPage).subscribe((response) => {
-    this.users = response.data;
-    this.loading = false;
-  });
-}
+  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const idParam = params.get('id');
+      if (idParam) {
+        const userId = parseInt(idParam, 10); // Convert string to number
+        this.loadUser(userId);
+      } else {
+        // Handle the case where 'id' is not provided or invalid
+        console.error('User ID is not provided or invalid');
+      }
+    });
+  }
   
-  onPaginateChange(event: any): void {
-    this.currentPage = event.pageIndex + 1;
-    this.loadUsers();
+  loadUser(id: number): void {
+    this.loading = true;
+    this.userService.getUserById(id).subscribe(response => {
+      this.user = response.data;
+      this.loading = false;
+    });
+  }
+
+  goBack(): void {
+    this.router.navigate(['/']);
   }
 }

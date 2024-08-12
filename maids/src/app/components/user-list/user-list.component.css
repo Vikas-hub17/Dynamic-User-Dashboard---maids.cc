@@ -1,0 +1,12 @@
+.user-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  mat-card {
+    margin: 15px;
+    cursor: pointer;
+    width: 300px;
+  }
+  

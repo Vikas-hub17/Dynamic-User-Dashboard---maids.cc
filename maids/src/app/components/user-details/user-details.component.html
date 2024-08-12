@@ -1,14 +1,7 @@
-<mat-card *ngIf="user">
-    <mat-card-header>
-      <mat-card-avatar>
-        <img mat-card-avatar [src]="user.avatar" alt="{{user.first_name}} {{user.last_name}}">
-      </mat-card-avatar>
-      <mat-card-title>{{user.first_name}} {{user.last_name}}</mat-card-title>
-      <mat-card-subtitle>User ID: {{user.id}}</mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content>
-      <p>Email: {{user.email}}</p>
-    </mat-card-content>
-    <button mat-button (click)="goBack()">Back</button>
-  </mat-card>
-  
+<mat-progress-bar *ngIf="loading" mode="indeterminate"></mat-progress-bar>
+<div *ngIf="user">
+  <img [src]="user.avatar" alt="{{ user.first_name }}">
+  <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+  <p>Email: {{ user.email }}</p>
+  <button mat-button (click)="goBack()">Back to Users</button>
+</div>

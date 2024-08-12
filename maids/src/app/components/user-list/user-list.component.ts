@@ -7,7 +7,7 @@ import { UserService } from '../../services/user.service';
   templateUrl: './user-details.component.html',
   styleUrls: ['./user-details.component.css'],
 })
-export class UserDetailsComponent implements OnInit {
+export class UserListComponent implements OnInit {
   user: any;
   loading: boolean = false;
 

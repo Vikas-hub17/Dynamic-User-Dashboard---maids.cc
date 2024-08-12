@@ -1,9 +1,7 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { UserListComponent } from './components/user-list/user-list.component';
 import { UserDetailsComponent } from './components/user-details/user-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -14,6 +12,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { UserListComponent } from './components/user-list/user-list.component';
+
+
 
 @NgModule({
   declarations: [
@@ -35,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent]
 })
